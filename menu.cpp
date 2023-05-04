@@ -6,6 +6,7 @@
 using namespace std;
 
 int mainmenu();
+int inputName();
 int instructions1();
 int instructions2();
 int instructions3();
@@ -94,7 +95,7 @@ int mainmenu()
     }
     if(highlight==0)
         {
-            return 0;
+            inputName();
         }
     else if(highlight==1)
     {
@@ -111,6 +112,78 @@ int mainmenu()
     return 0;
 }
 
+int inputName() 
+{
+    initscr(); //Initialize ncurses
+    cbreak(); //Don't buffer input
+    keypad(stdscr, TRUE); //Enable input from special keys
+    noecho(); //Don't echo input
+    curs_set(0); //Don't display cursor
+    refresh(); //Update screen initially (prevents getch() from clearing the screen)
+
+    // Create a 60x60 window
+    WINDOW* win = newwin(26, 60, 0, 0);
+
+    // Draw a box around the window
+    box(win, 0, 0);
+
+
+    //creating a play button:
+
+    //create a string that stores text displayed on the button
+    string playButton= "PLAY GAME";
+
+    //makes text bold 
+    wattron(win, A_BOLD);
+
+    //highlighting the play button
+    wattron(win, A_REVERSE);
+
+    //prints play button
+    mvwprintw(win, 19, ((60-playButton.length())/2), playButton.c_str());
+    
+    //turn off highlighting
+    wattroff(win, A_REVERSE);
+
+
+    // Create a string to store the player name
+    string playerName;
+    // Get input from the user until they press enter
+    int ch;
+    //declare and initialise variable to count and subsequently limit character count for name
+    int char_limit = 0;
+    //print a prompt to enter name
+    mvwprintw(win, 11, 21, "Enter your name:");
+    mvwprintw(win, 14, 23, "-----------");
+    while ((ch = wgetch(win)) != '\n') {
+        
+        if (ch == KEY_BACKSPACE || ch == 127) {
+            // Handle backspace key
+            if (!playerName.empty()) {
+                playerName.erase(playerName.size() - 1, 1);
+                mvwprintw(win, 13, 25, "       ");
+                mvwprintw(win, 13, 25, playerName.c_str());
+                //account for backspace in character count
+                char_limit--;
+            }
+        } else if (isprint(ch)) {
+            // Handle printable characters
+            //set character count limit to 7
+            if (char_limit!=7){
+                playerName += ch;
+                mvwprintw(win, 13, 25, playerName.c_str()); 
+                //account for increment in character count
+                char_limit++;
+            }
+            
+
+        }
+        //refresh window
+        wrefresh(win);
+        
+    }
+    return 0;
+}
 int instructions1()
 {
     WINDOW* instrucionWindow = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
