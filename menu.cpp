@@ -94,7 +94,7 @@ int mainmenu()
     }
     if(highlight==0)
         {
-            gamemodes();
+            return 0;
         }
     else if(highlight==1)
     {
