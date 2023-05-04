@@ -162,22 +162,9 @@ int instructions1()
     {
         instructions2();
     }
-    /*ifstream fin;
-    fin.open("instructions1.txt");
-    if(fin.fail())
-    {
-        wattron(instrucionWindow,A_BOLD);
-        wprintw(instrucionWindow,13,22,"ERROR");
-        wrefresh();
-    }
-    else
-    {
-
-    }
-    fin.close()
-    */
     return 0;
 }
+
 int instructions2()
 {
     WINDOW* instrucion2Window = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
@@ -284,6 +271,7 @@ int instructions3()
     }
     return 0;
 }
+
 int instructions4()
 {
     WINDOW* instrucion4Window = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
@@ -337,6 +325,7 @@ int instructions4()
     }
     return 0;
 }
+
 int credits()
 {
     return 0;
