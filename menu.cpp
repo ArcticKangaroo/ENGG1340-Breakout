@@ -195,6 +195,22 @@ int instructions1()
     int highlight3=1;
     for(;;)
     {   
+        //instructions on how to play the game
+        mvwprintw(instrucionWindow, 5, 13, "1.");
+        mvwprintw(instrucionWindow, 5, 15, "Press the left and right arrow");
+        mvwprintw(instrucionWindow, 6, 15, "to move the paddle.");
+        mvwprintw(instrucionWindow, 8, 13, "2.");
+        mvwprintw(instrucionWindow, 8, 15, "Your objective is to break the");
+        mvwprintw(instrucionWindow, 9, 15, "bricks using the ball.");
+        mvwprintw(instrucionWindow, 11, 13, "3.");
+        mvwprintw(instrucionWindow, 11, 15, "You will get points each time");
+        mvwprintw(instrucionWindow, 12, 15, "ball hits the brick.");
+        mvwprintw(instrucionWindow, 14, 13, "4.");
+        mvwprintw(instrucionWindow, 14, 15, "You have three lives.");
+        mvwprintw(instrucionWindow, 16, 13, "5.");
+        mvwprintw(instrucionWindow, 16, 15, "If the ball drops down, you");
+        mvwprintw(instrucionWindow, 17, 15, "lose a life.");
+        mvwprintw(instrucionWindow, 20, 22, "Happy gaming!");
         wattron(instrucionWindow, A_BOLD);//making all options bold
         mvwprintw(instrucionWindow, 24, 27, "PAGE 1");  
         //print file "instructions1.txt" here  
