@@ -424,3 +424,53 @@ int highscore()
 {
     return 0;
 }
+
+int gameOver()
+{
+    WINDOW* endWindow = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
+    box(endWindow, 0, 0);
+    wrefresh(endWindow);
+
+    int highlight=0;
+    int choice;
+    for(;;)
+    {
+        mvwprintw(endWindow, 1,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+        mvwprintw(endWindow, 2,2,"*   *   *   *   *   *   *   *   *   *   *   *   *   *   *");
+        mvwprintw(endWindow, 3,2,"       *    ______    *       *         *     *    *  *");
+        mvwprintw(endWindow, 4,2,"   *     * /  ____|      *      *    *     *     *    *");
+        mvwprintw(endWindow, 5,2,"  *    *  |  |  ___   _____  _________     ___     *  *");
+        mvwprintw(endWindow, 6,2,"    *   * |  | |_  | /  _  | |  _   _ \\  / _  \\  *    *");
+        mvwprintw(endWindow, 7,2," *       *|  |__|  | | (_| | | | | | | ||  __/    *   *");
+        mvwprintw(endWindow, 8,2," *     *   \\_______|  \\____| |_| |_| |_| \\____|    *  *");
+        mvwprintw(endWindow, 9,2,"    *     *     *     *     *     *     *     *     *   *");
+        mvwprintw(endWindow, 10,2,"*     *     *     *     *     *     *     *     *     *");
+        mvwprintw(endWindow, 11,2,"  *      *   ______   *      *     *   *      *    * *");
+        mvwprintw(endWindow, 12,2,"     *    * /  __  \\   *      *         *       *   *");
+        mvwprintw(endWindow, 13,2,"  *     *  |  |  |  | __    __  ___   __ ___  *      *");
+        mvwprintw(endWindow, 14,2,"     *    *|  |  |  | \\ \\  / / / _ \\ | '___|   *    *");
+        mvwprintw(endWindow, 15,2,"         * |  `--'  |  \\ \\/ / |  __/ | /    *     *  *");
+        mvwprintw(endWindow, 16,2," *     *    \\______/    \\__/   \\___| |_|   *   *    *");
+        mvwprintw(endWindow, 17,2,"*     *     *     *     *     *     *     *     *    * *");
+        mvwprintw(endWindow, 18,2,"   *     *     *     *     *     *     *     *    *    *"); 
+        mvwprintw(endWindow, 19,2,"*     *     *     *     *     *     *     *     *    * *"); 
+        mvwprintw(endWindow, 20,2,"   *     *     *     *     *     *     *     *    *    *");
+        mvwprintw(endWindow, 21,2,"* * * * * * * * * * * * * * * * * * * * * * * ** * * * ");
+        if(highlight==0)
+        {
+            wattron(endWindow, A_BOLD);//making all options bold
+            wattron(endWindow,A_REVERSE);
+            mvwprintw(endWindow, 24, 27, "BACK TO HOME");
+            wattroff(endWindow,A_REVERSE);
+        }
+        choice=getch();
+        if(choice==10)
+        {
+            mainmenu();
+            return 0;
+        }
+        wrefresh(endWindow);
+    }
+
+    return 0;
+}
