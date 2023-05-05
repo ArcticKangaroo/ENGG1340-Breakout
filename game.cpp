@@ -7,11 +7,11 @@
 
 using namespace std;
 
-
+//Define game window size
 int gameWindowSizeY = 20;
 int gameWindowSizeX = 60;
 
-
+//The Player class keeps track of the player's name, score, and remaining lives
 class Player {
 public:
     string name;
@@ -25,6 +25,7 @@ public:
     }
 };
 
+//The Brick class represents an individual brick and keeps track of its position and whether it has been destroyed
 class Brick {
 public:
     string sprite = "#";
@@ -38,6 +39,7 @@ public:
     }
 };
 
+//The Level class represents a level of the game and is responsible for creating and drawing the bricks
 class Level {
 public:
     int rows = 3;
@@ -65,6 +67,7 @@ public:
     }
 };
 
+//The Paddle class represents the player's paddle and is responsible for moving it left and right based on user input
 class Paddle {
 public:
     string sprite = "======"; 
@@ -101,6 +104,7 @@ public:
     }
 };
 
+//The Ball class is responsible for handling the ball
 class Ball {
 public:
     string sprite = "o";
@@ -123,7 +127,7 @@ public:
     }
 };
 
-
+//The game function runs the main game
 int game(string playerName) {
 
     //Randomize seed
@@ -145,7 +149,7 @@ int game(string playerName) {
     mvwprintw(commandsWindow, 1, 1, "[<][>]:Move Paddle                                [Q]:Quit");
     wrefresh(commandsWindow);    
 
-    //Initiliaze
+    //Initialize the player, level, ball and paddle
     Player player;
     player.init(playerName, 0, 3);
 
