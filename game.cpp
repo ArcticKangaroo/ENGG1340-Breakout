@@ -166,6 +166,7 @@ int game(string playerName) {
     wrefresh(gameWindow);
 
     bool restart = false;
+    bool died = false;
 
     //Game loop
     while(true) {
@@ -174,17 +175,18 @@ int game(string playerName) {
         int input = getch();
 
         //Quit if user presses 'Q'
-        if(input == 'q' || input == 'Q')
+        if(input == 'q' || input == 'Q') {
             break;
+        }
 
         if(player.lives == 0) {
-            getch();
+            died = true;
             break;
         }
 
         if(restart) {
-            restart = false;
             Ball *ball = new Ball(13, 30, -1, rand() % 3 - 1);
+            restart = false;
         }
 
         //Clears ball from last position to not leave a trail
@@ -205,10 +207,9 @@ int game(string playerName) {
             wattroff(gameWindow, A_BOLD);
             wattroff(gameWindow, A_REVERSE);
             wrefresh(gameWindow);
-            
             while(getch() != '\n') 
             {
-                
+                //Wait for user input
             }
             mvwprintw(gameWindow, 10, 18, "                       ");
             restart = true;
@@ -251,7 +252,8 @@ int game(string playerName) {
         usleep(100000);
     }
 
-    gameOver(player.name, player.score);
+    if(died) gameOver(player.name, player.score);
+    else mainmenu();
 
     return 0;
 }
