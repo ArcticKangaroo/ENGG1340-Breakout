@@ -12,10 +12,6 @@ using namespace std;
 int mainmenu();
 int inputName();
 int instructions1();
-int instructions2();
-int instructions3();
-int instructions4();
-int highscore();
 int credits();
 
 int mainmenu()
