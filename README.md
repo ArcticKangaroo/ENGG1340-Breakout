@@ -2,9 +2,8 @@
 <div align="center">
   <h3 align="center">ASCII Breakout</h3>
   <p align="center"><i>Breakout remade for the Linux terminal</i></p>
+  <img width="480" height="480" src="https://user-images.githubusercontent.com/62847649/236564562-6724a29f-6a8e-4140-a952-3a8c48c73d41.png" alt="Screenshot">
 </div>
-
-![Screenshot](https://user-images.githubusercontent.com/62847649/236564562-6724a29f-6a8e-4140-a952-3a8c48c73d41.png)
 
 <details>
   <summary>Table of Contents</summary>
