@@ -28,24 +28,24 @@ int mainmenu()
     while(TRUE)
     {
         
-        mvwprintw(menuWindow, 1,1,"* * * * * * * * * * * * * * * * * * * * * * * * ");
-        mvwprintw(menuWindow, 2,1,"*   *   *   *   *   *   *   *   *   *   *   *   ");
-        mvwprintw(menuWindow, 3,6,".______  .______   _______     ___      __  ___ ");
-        mvwprintw(menuWindow, 4,6,"|   _  \\ |   _  \\ |   ____|   /   \\    |  |/  / ");
-        mvwprintw(menuWindow, 5,6,"|  |_)  ||  |_)  ||  |__     /  ^  \\   |  '  / ");
-        mvwprintw(menuWindow, 6,6,"|   _  < |      / |   __|   /  /_\\  \\  |    < ");
-        mvwprintw(menuWindow, 7,6,"|  |_)  ||  |\\  \\ |  |____ /  _____  \\ |  .  \\ ");
-        mvwprintw(menuWindow, 8,6,"|______/ | _| `._||_______/__/     \\__\\|__|\\__\\ ");
-        mvwprintw(menuWindow, 9,1,"*     *     *     *     *     *     *     *  ");
-        mvwprintw(menuWindow, 10,15,"  ______   __    __ .________.");
-        mvwprintw(menuWindow, 11,15," /  __  \\ |  |  |  ||        |");
-        mvwprintw(menuWindow, 12,15,"|  |  |  ||  |  |  |`--|  |--`");
-        mvwprintw(menuWindow, 13,15,"|  |  |  ||  |  |  |   |  |  ");
-        mvwprintw(menuWindow, 14,15,"|  `--'  ||  `--'  |   |  |  ");
-        mvwprintw(menuWindow, 15,15," \\______/  \\______/    |__|  ");
-        mvwprintw(menuWindow, 16,1,"*      *      *         *     *      *    * ");
-        mvwprintw(menuWindow, 17,1,"   *     *         *       *       *        *"); 
-        mvwprintw(menuWindow, 18,1," *    *    *     *    *         *      *   ");  
+        mvwprintw(menuWindow, 1,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+        mvwprintw(menuWindow, 2,2,"*   *   *   *   *   *   *   *   *   *   *   *    *      *");
+        mvwprintw(menuWindow, 3,2,"*    .______* .______ * _______  *  ___   *  __ *___ *  *");
+        mvwprintw(menuWindow, 4,2,"*  * |   _  \\ |   _  \\ |   ____|   /   \\    |  |/  /  * *");
+        mvwprintw(menuWindow, 5,2,"* *  |  |_)  ||  |_)  ||  |__     /  ^  \\   |  '  / *   *");
+        mvwprintw(menuWindow, 6,2,"*   *|   _  < |      / |   __|   /  /_\\  \\  |    <   *  *");
+        mvwprintw(menuWindow, 7,2,"* *  |  |_)  ||  |\\  \\ |  |____ /  _____  \\ |  .  \\ *   *");
+        mvwprintw(menuWindow, 8,2,"*   *|______/ | _| `._||_______/__/     \\__\\|__|\\__\\  * *");
+        mvwprintw(menuWindow, 9,2,"*  *   *    *     *     *     *     *     *    *   *    *");
+        mvwprintw(menuWindow, 10,2,"*   *   *   * ______ * __  * __*.________.  *   *   *   *");
+        mvwprintw(menuWindow, 11,2,"* *   *   *  /  __  \\ |  |  |  ||        |*   *   *  *  *");
+        mvwprintw(menuWindow, 12,2,"*  *    *   |  |  |  ||  |  |  |`--|  |--`  *   *   *   *");
+        mvwprintw(menuWindow, 13,2,"**   *    * |  |  |  ||  |  |  |   |  |*  *   *   *   * *");
+        mvwprintw(menuWindow, 14,2,"*  *    *   |  `--'  ||  `--'  |   |  | *   *   *   *   *");
+        mvwprintw(menuWindow, 15,2,"**   *    *  \\______/  \\______/    |__|*    *   *   * * *");
+        mvwprintw(menuWindow, 16,2,"*  *  *   *   *   *     *     *   *     *   *   *  *  * *");
+        mvwprintw(menuWindow, 17,2,"* *  *   *  *   *    *     *    *    *    *   *  *  *  **"); 
+        mvwprintw(menuWindow, 18,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");  
         for(int i=0;i<5;i++)
         {
             wattron(menuWindow, A_BOLD);//making all options bold
@@ -196,11 +196,10 @@ int instructions1()
         mvwprintw(instrucionWindow, 16, 15, "If the ball drops down, you");
         mvwprintw(instrucionWindow, 17, 15, "lose a life.");
         mvwprintw(instrucionWindow, 20, 22, "Happy gaming!");
-        wattron(instrucionWindow, A_BOLD);//making all options bold
-        mvwprintw(instrucionWindow, 24, 27, "PAGE 1");  
+        wattron(instrucionWindow, A_BOLD);//making all options bold 
         //print file "instructions1.txt" here  
         wattron(instrucionWindow, A_REVERSE);//highlighting the selected option
-        mvwprintw(instrucionWindow, 24, 24, "BACK TO MENU");//printing options
+        mvwprintw(instrucionWindow, 24, 45, "BACK TO MENU->");//printing options
         wattroff(instrucionWindow, A_REVERSE);//de-highlighting the non selected options
         wrefresh(instrucionWindow);
         choice = getch();//getting user input
@@ -250,7 +249,7 @@ int gameOver(string playerName, int playerScore)
         mvwprintw(endWindow, 18,2,"   *     *     *     *     *     *     *     *    *    *"); 
         mvwprintw(endWindow, 19,2,"*     *     *     *     *     *     *     *     *    * *"); 
         mvwprintw(endWindow, 20,2,"   *     *     *     *     *     *     *     *    *    *");
-        mvwprintw(endWindow, 21,2,"* * * * * * * * * * * * * * * * * * * * * * * ** * * * ");
+        mvwprintw(endWindow, 21,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * *");
         if(highlight==0)
         {
             wattron(endWindow, A_BOLD);//making all options bold
