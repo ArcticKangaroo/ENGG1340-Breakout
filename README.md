@@ -4,7 +4,7 @@
   <p align="center"><i>Breakout remade for the Linux terminal</i></p>
 </div>
 
-![Screenshot]()
+![Screenshot](https://user-images.githubusercontent.com/62847649/236564562-6724a29f-6a8e-4140-a952-3a8c48c73d41.png)
 
 <details>
   <summary>Table of Contents</summary>
