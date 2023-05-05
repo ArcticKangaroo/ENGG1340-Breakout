@@ -119,28 +119,7 @@ public:
 int lives;
 int score;
 
-int main() {
-    
-    //Initialize ncurses
-    initscr();
-    
-    //Don't buffer input 
-    cbreak(); 
-
-    //Enable input from special keys
-    keypad(stdscr, TRUE);
-
-    //Don't echo input
-    noecho(); 
-
-    //Don't display cursor
-    curs_set(0); 
-
-    //Update screen initially (prevents getch() from clearing the screen)
-    refresh(); 
-
-    //Set getch() to non-blocking mode
-    nodelay(stdscr, TRUE); 
+int game() {
 
     //Randomize seed
     srand(time(nullptr)); 
@@ -148,26 +127,21 @@ int main() {
     int gameWindowSizeY = 20;
     int gameWindowSizeX = 60;
 
-    WINDOW* scoreWindow = newwin(3, 60, 0, 0);
-    box(scoreWindow, 0, 0);
-    wrefresh(scoreWindow);
-
-    WINDOW* gameWindow = newwin(gameWindowSizeY, gameWindowSizeX, 3, 0); //Create a window for the game <rows, cols, y, x>
-    box(gameWindow, 0, 0); //Draw a box <window, char for y, char for x> - look at wborder()
-    wrefresh(gameWindow); //Refresh the window
-    
-    /*WINDOW* infoWindow = newwin(20, 20, 3, 30);
+    WINDOW* infoWindow = newwin(3, 60, 0, 0);
     box(infoWindow, 0, 0);
-    wrefresh(infoWindow);*/
+    wrefresh(infoWindow);
+
+    //Create a window for the game <rows, cols, y, x>
+    WINDOW* gameWindow = newwin(gameWindowSizeY, gameWindowSizeX, 3, 0); 
+    //Draw a box <window, char for y, char for x> - look at wborder()
+    box(gameWindow, 0, 0); 
+    //Refresh the window
+    wrefresh(gameWindow); 
     
     WINDOW* commandsWindow = newwin(3, 60, 23, 0);
     box(commandsWindow, 0, 0);
     mvwprintw(commandsWindow, 1, 1, "[<][>]:Move Paddle                                [Q]:Quit");
     wrefresh(commandsWindow);    
-
-    /*WINDOW* debugWindow = newwin(3, 50, 26, 0);
-    box(debugWindow, 0, 0);
-    wrefresh(debugWindow); */
 
     Player player;
     player.score = 0;
@@ -188,18 +162,11 @@ int main() {
         int input = getch();
 
         //Quit if user presses 'Q'
-        if(input == 'q')
+        if(input == 'q' || input == 'Q')
             break;
 
-        if(input == 'r') {
-            mvwprintw(gameWindow, ball.y, ball.x, " ");
-            ball.y = 16;
-            ball.x = rand() % 27 + 1;
-            ball.dy = -1;
-            ball.dx = rand() % 3 - 1;
-        }
-
-        mvwprintw(gameWindow, ball.y, ball.x, " "); //Clears ball from last position to not leave a trail
+        //Clears ball from last position to not leave a trail
+        mvwprintw(gameWindow, ball.y, ball.x, " "); 
         if(ball.x <= 1 || ball.x >= gameWindowSizeX - 2) {
             ball.dx = -ball.dx;
         }
@@ -212,7 +179,7 @@ int main() {
             ball.y = 15;
             ball.x = 30;
         }
-        if(ball.y == paddle.y - 1 && ball.x >= paddle.x - 1 && ball.x < paddle.x + 6) { //account for slanted angles
+        if(ball.y == paddle.y - 1 && ball.x >= paddle.x - 1 && ball.x < paddle.x + 6) { /*account for slanted angles*/
             ball.dy = -ball.dy;
             ball.dx = max(-1, min(1, ball.dx + (rand() % 3 - 1)));
         }
@@ -253,25 +220,22 @@ int main() {
         
         string score = "Score:" + to_string(player.score);
         string lives = "Lives:" + to_string(player.lives);
-        string scoreBar = lives + "                                       " + score;
+        string playerInfo = lives + "                                       " + score;
 
-        //mvwprintw(scoreWindow, 1, 1, "LIVES:"+ player.lives + "                                       SCORE:" + player.score); //Print output in window <window, y, x, char*>
-        /*string debugInfo = "Ball: " + to_string(ball.x) + " " + to_string(ball.y) + "     " + "Paddle: " + to_string(paddle.x) + " " + to_string(paddle.y) + "     ";*/
-
-        mvwprintw(scoreWindow, 1, 1, scoreBar.c_str());
-        wrefresh(scoreWindow);
+        mvwprintw(infoWindow, 1, 1, playerInfo.c_str());
+        wrefresh(infoWindow);
 
         level.draw(gameWindow);
-        /*mvwprintw(debugWindow, 1, 1, debugInfo.c_str());*/
         wrefresh(gameWindow);
-        /*wrefresh(debugWindow);*/
-        /*why does this only work here?*/
-        flushinp(); //Clear buffered input from previous frame
 
+        //Clear buffered input from previous frame
+        flushinp(); 
+        //Sleep for 100000 microseconds before updating
         usleep(100000);
     }
 
-    endwin(); //Clear terminal settings
+    //Clear terminal settings
+    endwin(); 
 
     return 0;
 }
