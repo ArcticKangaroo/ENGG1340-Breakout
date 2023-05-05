@@ -3,6 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "menu.h"
+#include "game.h"
+
 using namespace std;
 
 int mainmenu();
@@ -14,23 +17,11 @@ int instructions4();
 int highscore();
 int credits();
 
-int main() // main menu window
-{
-    initscr(); //Initialize ncurses
-    cbreak(); //Don't buffer input
-    keypad(stdscr, TRUE); //Enable input from special keys
-    noecho(); //Don't echo input
-    curs_set(0); //Don't display cursor
-    nodelay(stdscr, TRUE); //Set getch() to non-blocking mode
-    refresh(); //Update screen initially (prevents getch() from clearing the screen)
-    mainmenu();
-    endwin();
-    return 0;
-    //g++ -lncurses menu.cpp -o menu
-}
 int mainmenu()
 {
-    WINDOW* menuWindow = newwin(26, 60, 3, 0); //main menu window initialization (rows,cols,y,x)
+    refresh();
+
+    WINDOW* menuWindow = newwin(26, 60, 0, 0); //main menu window initialization (rows,cols,y,x)
     box(menuWindow, 0, 0);
     wrefresh(menuWindow);
 
@@ -109,17 +100,13 @@ int mainmenu()
     {
         credits();
     }
+
     return 0;
 }
 
 int inputName() 
 {
-    initscr(); //Initialize ncurses
-    cbreak(); //Don't buffer input
-    keypad(stdscr, TRUE); //Enable input from special keys
-    noecho(); //Don't echo input
-    curs_set(0); //Don't display cursor
-    refresh(); //Update screen initially (prevents getch() from clearing the screen)
+    refresh();
 
     // Create a 60x60 window
     WINDOW* win = newwin(26, 60, 0, 0);
@@ -182,11 +169,14 @@ int inputName()
         wrefresh(win);
         
     }
+    if(playerName.empty()) playerName = "NONAME";
+
+    game(playerName);
     return 0;
 }
 int instructions1()
 {
-    WINDOW* instrucionWindow = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
+    WINDOW* instrucionWindow = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(instrucionWindow, 0, 0);
     wrefresh(instrucionWindow);
 
@@ -256,7 +246,7 @@ int instructions1()
 
 int instructions2()
 {
-    WINDOW* instrucion2Window = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
+    WINDOW* instrucion2Window = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(instrucion2Window, 0, 0);
     wrefresh(instrucion2Window);
 
@@ -309,7 +299,7 @@ int instructions2()
 }
 int instructions3()
 {
-    WINDOW* instrucion3Window = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
+    WINDOW* instrucion3Window = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(instrucion3Window, 0, 0);
     wrefresh(instrucion3Window);
 
@@ -363,7 +353,7 @@ int instructions3()
 
 int instructions4()
 {
-    WINDOW* instrucion4Window = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
+    WINDOW* instrucion4Window = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(instrucion4Window, 0, 0);
     wrefresh(instrucion4Window);
 
@@ -425,9 +415,9 @@ int highscore()
     return 0;
 }
 
-int gameOver()
+int gameOver(string playerName, int playerScore)
 {
-    WINDOW* endWindow = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
+    WINDOW* endWindow = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(endWindow, 0, 0);
     wrefresh(endWindow);
 

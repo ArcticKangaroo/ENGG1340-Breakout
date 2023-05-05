@@ -1,5 +1,5 @@
 #include <ncurses.h>
-#include "game.h"
+#include "menu.h"
 
 int main() {
 
@@ -24,7 +24,10 @@ int main() {
     //Set getch() to non-blocking mode
     nodelay(stdscr, TRUE); 
 
-    game();
+    mainmenu();
+
+    //Clear terminal settings
+    endwin();
 
     return 0;
 }

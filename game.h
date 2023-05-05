@@ -7,26 +7,8 @@
 #include <cstdlib>
 #include <ctime>
 
-class Paddle {
-    // class definition
-};
+using namespace std;
 
-class Ball {
-    // class definition
-};
+int game(string playerName);
 
-class Brick {
-    // class definition
-};
-
-class Level {
-    // class definition
-};
-
-class Player {
-    // class definition
-};
-
-int game();
-
-#endif // GAME_H
+#endif
