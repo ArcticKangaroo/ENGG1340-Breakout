@@ -126,8 +126,6 @@ public:
 
 int game(string playerName) {
 
-    refresh();
-
     //Randomize seed
     srand(time(nullptr)); 
 

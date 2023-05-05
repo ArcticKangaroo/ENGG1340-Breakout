@@ -5,6 +5,7 @@
 #include <vector>
 #include <ncurses.h>
 #include <cstring>
+#include "menu.h"
 
 using namespace std;
 
@@ -14,23 +15,16 @@ struct PlayerScores
     int PlayerScore;
 };
 
-void InputToFile() 
+void InputToFile(string playerName, int playerScore) 
 {
-    string playername;
-    int playerscore;
     PlayerScores player1;
-    cout << "Enter player name: ";
-    cin >> player1.PlayerName;
-    cout << "Enter player score: ";
-    cin >> player1.PlayerScore;
+    player1.PlayerName = playerName;
+    player1.PlayerScore = playerScore;
     ofstream scorefile;
     scorefile.open("scores", ios_base::app);
     if (scorefile.is_open()) {
         scorefile << player1.PlayerName << " " << player1.PlayerScore << endl;
         scorefile.close();
-        cout << "Score added to the file." << endl;
-    } else {
-        cout << "Error opening file." << endl;
     }
 }
 
@@ -50,23 +44,14 @@ vector<PlayerScores> SortFile()
         }
         inputFile.close();
         sort(scores.begin(), scores.end(), ScoreComparison);
-    } else {
-        cout << "Error opening file." << endl;
-    }
+    } 
     return scores;
 }
 
-int main() 
+int highscores() 
 {
-    initscr();
-    cbreak();
-    keypad(stdscr, TRUE);
-    noecho();
-    curs_set(0);
-    nodelay(stdscr, TRUE);
-    refresh();
 
-    WINDOW* hsWindow = newwin(26,60,3,0);
+    WINDOW* hsWindow = newwin(26,60,0,0);
     // Draw box
     box(hsWindow, 0, 0);
     wrefresh(hsWindow);
@@ -98,7 +83,6 @@ int main()
                 break;
             }
         }
-    getch();
-    endwin();
+    mainmenu();
     return 0;
 }

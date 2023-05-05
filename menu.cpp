@@ -5,6 +5,7 @@
 #include <string>
 #include "menu.h"
 #include "game.h"
+#include "highscore.h"
 
 using namespace std;
 
@@ -19,7 +20,6 @@ int credits();
 
 int mainmenu()
 {
-    refresh();
 
     WINDOW* menuWindow = newwin(26, 60, 0, 0); //main menu window initialization (rows,cols,y,x)
     box(menuWindow, 0, 0);
@@ -106,7 +106,6 @@ int mainmenu()
 
 int inputName() 
 {
-    refresh();
 
     // Create a 60x60 window
     WINDOW* win = newwin(26, 60, 0, 0);
@@ -412,6 +411,7 @@ int credits()
 
 int highscore()
 {
+    highscores();
     return 0;
 }
 
@@ -420,6 +420,8 @@ int gameOver(string playerName, int playerScore)
     WINDOW* endWindow = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(endWindow, 0, 0);
     wrefresh(endWindow);
+
+    InputToFile(playerName, playerScore);
 
     int highlight=0;
     int choice;
