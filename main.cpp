@@ -24,6 +24,7 @@ int main() {
     //Set getch() to non-blocking mode
     nodelay(stdscr, TRUE); 
 
+    //Start the game from the main menu
     mainmenu();
 
     //Clear terminal settings
