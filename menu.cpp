@@ -198,7 +198,7 @@ int instructions1() {
     return 0;
 }
 
-int credits(){
+int credits() {
     WINDOW* endWindow = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
     box(endWindow, 0, 0);
     wrefresh(endWindow);
@@ -217,7 +217,7 @@ int credits(){
     mvwprintw(endWindow, 20, 23, " ");
     mvwprintw(endWindow, 21, 23, "Lakshya Tulsyan");
 
-    for(;;){
+    for(;;) {
         mvwprintw(endWindow, 1,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
         mvwprintw(endWindow, 2,2,"*   *   *   *   *   *   *   *   *   *   *   *   *   *   *");
         mvwprintw(endWindow, 3,2,"*  ________       *     *   *  *_   _*  __  *  * *      *");
@@ -230,14 +230,14 @@ int credits(){
         mvwprintw(endWindow, 10,2,"*     *     *     *     *     *     *     *     *    *  *");
         mvwprintw(endWindow, 11,2,"* * * * * * * * * * * * * * * * * * * * * * * ** * * *  *");
         
-        if(highlight==0){
+        if(highlight==0) {
             wattron(endWindow, A_BOLD);//making all options bold
             wattron(endWindow,A_REVERSE);
             mvwprintw(endWindow, 24, 24, "BACK TO HOME");
             wattroff(endWindow,A_REVERSE);
         }
         choice=getch();
-        if(choice==10){
+        if(choice==10) {
             mainmenu();
             return 0;
         }
