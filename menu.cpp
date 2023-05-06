@@ -69,22 +69,20 @@ int mainmenu() {
                 break;
         }
 
-        if (choice==10)//checking for option selected {
+        if(choice==10) { //checking for option selected
             break;
         }
 
         wrefresh(menuWindow);
     }
+
     if(highlight==0) {
             inputName();
-        }
-    else if(highlight==1) {
+    } else if(highlight==1) {
         instructions1();
-    }
-    else if(highlight==2) {
+    } else if(highlight==2) {
         highscores();
-    }
-    else if(highlight==3) {
+    } else if(highlight==3) {
         credits();
     }
 
