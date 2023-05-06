@@ -197,7 +197,7 @@ int instructions1() {
 }
 
 int credits() {
-    WINDOW* endWindow = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
+    WINDOW* endWindow = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(endWindow, 0, 0);
     wrefresh(endWindow);
 
