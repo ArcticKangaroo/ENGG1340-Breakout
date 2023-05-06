@@ -220,9 +220,9 @@ int credits() {
         mvwprintw(endWindow, 2,2,"*   *   *   *   *   *   *   *   *   *   *   *   *   *   *");
         mvwprintw(endWindow, 3,2,"*  ________       *     *   *  *_   _*  __  *  * *      *");
         mvwprintw(endWindow, 4,2,"* /   __   |  *    *  *   *    | | (_) |  |   *    * *  *");
-        mvwprintw(endWindow, 5,2,"* |  |  |_| _ ___   ___    ___| |  _  |  |  _____     *");
+        mvwprintw(endWindow, 5,2,"* |  |  |__| _ ___   ___    ___| |  _  |  |   _____     *");
         mvwprintw(endWindow, 6,2,"* |  |  ___ | ' __| / _ \\  /  _  | | | | __| / ____| *  *");
-        mvwprintw(endWindow, 7,2,"* |  ||  ||  /    |___/ |  (_| | | | | |  \\__ \\ *   *");
+        mvwprintw(endWindow, 7,2,"* |  | |   ||  /   | ___/ |  (_| | | | | |   \\__  \\ *   *");
         mvwprintw(endWindow, 8,2,"*  \\_______||__|    \\___|  \\__,__| |_| \\___| |____/  *  *");
         mvwprintw(endWindow, 9,2,"*   *     *     *     *     *     *     *     *     *   *");
         mvwprintw(endWindow, 10,2,"*     *     *     *     *     *     *     *     *    *  *");
