@@ -198,9 +198,55 @@ int instructions1() {
     return 0;
 }
 
-int credits() {
+int credits(){
+    WINDOW* endWindow = newwin(26, 60, 3, 0); //instruction window initialization (rows,cols,y,x)
+    box(endWindow, 0, 0);
+    wrefresh(endWindow);
+
+    int highlight=0;
+    int choice;
+
+    // Adding the names under the ASCII art
+    mvwprintw(endWindow, 13, 23, "Achal Agarwal");
+    mvwprintw(endWindow, 14, 23, " ");
+    mvwprintw(endWindow, 15, 23, "Anubhav Kashyap");
+    mvwprintw(endWindow, 16, 23, " ");
+    mvwprintw(endWindow, 17, 23, "Arnav Kejriwal");
+    mvwprintw(endWindow, 18, 23, " ");
+    mvwprintw(endWindow, 19, 22, "James Megadyanto");
+    mvwprintw(endWindow, 20, 23, " ");
+    mvwprintw(endWindow, 21, 23, "Lakshya Tulsyan");
+
+    for(;;){
+        mvwprintw(endWindow, 1,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
+        mvwprintw(endWindow, 2,2,"*   *   *   *   *   *   *   *   *   *   *   *   *   *   *");
+        mvwprintw(endWindow, 3,2,"*  ________       *     *   *  *_   _*  __  *  * *      *");
+        mvwprintw(endWindow, 4,2,"* /   __   |  *    *  *   *    | | (_) |  |   *    * *  *");
+        mvwprintw(endWindow, 5,2,"* |  |  |_| _ ___   ___    ___| |  _  |  |  _____     *");
+        mvwprintw(endWindow, 6,2,"* |  |  ___ | ' __| / _ \\  /  _  | | | | __| / ____| *  *");
+        mvwprintw(endWindow, 7,2,"* |  ||  ||  /    |___/ |  (_| | | | | |  \\__ \\ *   *");
+        mvwprintw(endWindow, 8,2,"*  \\_______||__|    \\___|  \\__,__| |_| \\___| |____/  *  *");
+        mvwprintw(endWindow, 9,2,"*   *     *     *     *     *     *     *     *     *   *");
+        mvwprintw(endWindow, 10,2,"*     *     *     *     *     *     *     *     *    *  *");
+        mvwprintw(endWindow, 11,2,"* * * * * * * * * * * * * * * * * * * * * * * ** * * *  *");
+        
+        if(highlight==0){
+            wattron(endWindow, A_BOLD);//making all options bold
+            wattron(endWindow,A_REVERSE);
+            mvwprintw(endWindow, 24, 24, "BACK TO HOME");
+            wattroff(endWindow,A_REVERSE);
+        }
+        choice=getch();
+        if(choice==10){
+            mainmenu();
+            return 0;
+        }
+        wrefresh(endWindow);
+    }
+
     return 0;
 }
+    
 
 int gameOver(string playerName, int playerScore) {
     WINDOW* endWindow = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
