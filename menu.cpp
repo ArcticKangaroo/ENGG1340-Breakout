@@ -14,8 +14,7 @@ int inputName();
 int instructions1();
 int credits();
 
-int mainmenu()
-{
+int mainmenu() {
 
     WINDOW* menuWindow = newwin(26, 60, 0, 0); //main menu window initialization (rows,cols,y,x)
     box(menuWindow, 0, 0);
@@ -25,8 +24,7 @@ int mainmenu()
     int choice;
     int highlight=0;
 
-    while(TRUE)
-    {
+    while(TRUE) {
         
         mvwprintw(menuWindow, 1,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
         mvwprintw(menuWindow, 2,2,"*   *   *   *   *   *   *   *   *   *   *   *    *      *");
@@ -46,11 +44,9 @@ int mainmenu()
         mvwprintw(menuWindow, 16,2,"*  *  *   *   *   *     *     *   *     *   *   *  *  * *");
         mvwprintw(menuWindow, 17,2,"* *  *   *  *   *    *     *    *    *    *   *  *  *  **"); 
         mvwprintw(menuWindow, 18,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");  
-        for(int i=0;i<5;i++)
-        {
+        for(int i=0;i<5;i++) {
             wattron(menuWindow, A_BOLD);//making all options bold
-            if(i==highlight)
-            {
+            if(i==highlight) {
                 wattron(menuWindow, A_REVERSE);//highlighting the selected option
             }
             mvwprintw(menuWindow, 18+i+1, ((60-menu1[i].length())/2), menu1[i].c_str());//printing options
@@ -58,8 +54,7 @@ int mainmenu()
         }
         choice = getch();//getting user input
 
-        switch (choice)
-        {
+        switch(choice) {
             case KEY_UP:
                 highlight--;//changing highlighted option
                 if(highlight<0)//checking whether the choice is going out of bounds
@@ -74,35 +69,29 @@ int mainmenu()
                 break;
         }
 
-        if (choice==10)//checking for option selected
-        {
+        if (choice==10)//checking for option selected {
             break;
         }
 
         wrefresh(menuWindow);
     }
-    if(highlight==0)
-        {
+    if(highlight==0) {
             inputName();
         }
-    else if(highlight==1)
-    {
+    else if(highlight==1) {
         instructions1();
     }
-    else if(highlight==2)
-    {
+    else if(highlight==2) {
         highscores();
     }
-    else if(highlight==3)
-    {
+    else if(highlight==3) {
         credits();
     }
 
     return 0;
 }
 
-int inputName() 
-{
+int inputName() {
 
     // Create a 60x60 window
     WINDOW* win = newwin(26, 60, 0, 0);
@@ -171,15 +160,13 @@ int inputName()
     return 0;
 }
 
-int instructions1()
-{
+int instructions1() {
     WINDOW* instrucionWindow = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(instrucionWindow, 0, 0);
     wrefresh(instrucionWindow);
     int choice;
     int highlight3=1;
-    for(;;)
-    {   
+    for(;;) {   
         //instructions on how to play the game
         mvwprintw(instrucionWindow, 5, 13, "1.");
         mvwprintw(instrucionWindow, 5, 15, "Press the left and right arrow");
@@ -203,8 +190,7 @@ int instructions1()
         wattroff(instrucionWindow, A_REVERSE);//de-highlighting the non selected options
         wrefresh(instrucionWindow);
         choice = getch();//getting user input
-        if(choice==10)
-        {
+        if(choice==10) {
             break;
         }
     }
@@ -212,13 +198,11 @@ int instructions1()
     return 0;
 }
 
-int credits()
-{
+int credits() {
     return 0;
 }
 
-int gameOver(string playerName, int playerScore)
-{
+int gameOver(string playerName, int playerScore) {
     WINDOW* endWindow = newwin(26, 60, 0, 0); //instruction window initialization (rows,cols,y,x)
     box(endWindow, 0, 0);
     wrefresh(endWindow);
@@ -227,8 +211,7 @@ int gameOver(string playerName, int playerScore)
 
     int highlight=0;
     int choice;
-    for(;;)
-    {
+    for(;;) {
         mvwprintw(endWindow, 1,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * * *");
         mvwprintw(endWindow, 2,2,"*   *   *   *   *   *   *   *   *   *   *   *   *   *   *");
         mvwprintw(endWindow, 3,2,"       *    ______    *       *         *     *    *  *");
@@ -250,16 +233,15 @@ int gameOver(string playerName, int playerScore)
         mvwprintw(endWindow, 19,2,"*     *     *     *     *     *     *     *     *    * *"); 
         mvwprintw(endWindow, 20,2,"   *     *     *     *     *     *     *     *    *    *");
         mvwprintw(endWindow, 21,2,"* * * * * * * * * * * * * * * * * * * * * * * * * * * *");
-        if(highlight==0)
-        {
+        
+        if(highlight==0) {
             wattron(endWindow, A_BOLD);//making all options bold
             wattron(endWindow,A_REVERSE);
             mvwprintw(endWindow, 24, 27, "BACK TO HOME");
             wattroff(endWindow,A_REVERSE);
         }
         choice=getch();
-        if(choice==10)
-        {
+        if(choice==10) {
             mainmenu();
             return 0;
         }
