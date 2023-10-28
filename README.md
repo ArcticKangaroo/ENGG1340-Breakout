@@ -1,6 +1,6 @@
 <br/>
 <div align="center">
-  <h3 align="center">ASCII Breakout</h3>
+  <h3 align="center">ENGG1340 Breakout</h3>
   <p align="center"><i>Breakout remade for the Linux terminal</i></p>
   <img width="480" height="480" src="https://user-images.githubusercontent.com/62847649/236564562-6724a29f-6a8e-4140-a952-3a8c48c73d41.png" alt="Screenshot">
 </div>
@@ -36,8 +36,8 @@ https://user-images.githubusercontent.com/62847649/236627143-70ff03c3-d35b-45a5-
 `ncurses` - The ncurses library was used to draw console graphics smoothly instead of having to redraw the whole window every time the game updates.
 
 ### Instructions for Building
-* Clone the project repository: `git clone https://github.com/ArcticKangaroo/ASCII-Breakout.git`
-* Navigate to the project directory: `cd ASCII-Breakout/`
+* Clone the project repository: `git clone https://github.com/ArcticKangaroo/ENGG1340-Breakout.git`
+* Navigate to the project directory: `cd ENGG1340-Breakout/`
 * Make the game: `make breakout`
 * Execute the game: `./breakout`
 * To remove the game, run `make clean`
